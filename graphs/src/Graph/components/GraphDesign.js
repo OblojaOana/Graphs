@@ -38,22 +38,38 @@ const GraphDesign = ({ statData }) => {
 
   return (
     <div>
-      <svg width={width} height={height}>
-        {data.map((d, i) => {
-          const barHeight = yMax - yPoint(d);
-          return (
-            <Group key={`bar-${i}`}>
-              <Bar
-                x={xPoint(d)}
-                y={yMax - barHeight}
-                height={barHeight}
-                width={xScale.bandwidth()}
-                fill="#eb6834"
-              />
-            </Group>
-          );
-        })}
-      </svg>
+      <h4>Number of posts created in each month of 2019</h4>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          height: "100vh",
+          alignItems: "center",
+        }}
+      >
+        <svg width={width} height={height}>
+          {data.map((d, i) => {
+            const barHeight = yMax - yPoint(d);
+            return (
+              <>
+                <Group key={`bar-${i}`}>
+                  <Bar
+                    x={xPoint(d)}
+                    y={yMax - barHeight}
+                    height={barHeight}
+                    width={xScale.bandwidth()}
+                    fill="#eb6834"
+                    onClick={() => {
+                      alert(`${JSON.stringify(Object.values(d))}`);
+                    }}
+                  />
+                </Group>
+                
+              </>
+            );
+          })}
+        </svg>
+      </div>
     </div>
   );
 };
