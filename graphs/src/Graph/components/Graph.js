@@ -2,8 +2,9 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { LOAD_POSTS } from "../gql/Queries";
 import { monthsNames } from "./monthsNames";
+import GraphDesign from "./GraphDesign";
 
-function Graph() {
+const Graph = () => {
   const { loading, data } = useQuery(LOAD_POSTS);
 
   if (loading) return <div></div>;
@@ -24,7 +25,7 @@ function Graph() {
     };
   });
 
-  return <div></div>;
-}
+  return <GraphDesign statData={statData} />;
+};
 
 export default Graph;
